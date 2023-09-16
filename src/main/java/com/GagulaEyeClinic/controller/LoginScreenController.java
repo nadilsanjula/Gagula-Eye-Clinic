@@ -9,9 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert;
+import javafx.animation.Timeline;
 import javafx.scene.control.Alert.AlertType;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javafx.animation.KeyFrame;
+import javafx.util.Duration;
+import javafx.event.EventHandler;
 import java.io.IOException;
+import javafx.scene.Parent;
+
+
 
 public class LoginScreenController {
 
@@ -20,6 +28,7 @@ public class LoginScreenController {
 
     @FXML
     private Label lblTime;
+
 
     @FXML
     private Label lblDate;
@@ -32,6 +41,37 @@ public class LoginScreenController {
 
     @FXML
     private JFXPasswordField passwrdField;
+
+
+    private Timeline timeline; // Declare the Timeline here
+
+    private void updateTimeLabel() {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        String formattedTime = timeFormat.format(new Date());
+        lblTime.setText(formattedTime);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = dateFormat.format(new Date());
+        lblDate.setText(formattedDate);
+    }
+
+    public void initialize() {
+        updateTimeLabel();
+
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.seconds(1),
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        updateTimeLabel();
+                    }
+                }
+        ));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+
 
     public void loginBtnOnAction(ActionEvent actionEvent) throws IOException {
         String username = usrnmeField.getText();

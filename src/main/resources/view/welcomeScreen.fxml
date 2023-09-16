@@ -19,7 +19,7 @@
             <Font name="Segoe UI" size="140.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="1437.0" layoutY="299.0" prefHeight="40.0" prefWidth="305.0" text="2023-January-15" textFill="WHITE">
+      <Label fx:id="lblDate" layoutX="1437.0" layoutY="299.0" prefHeight="40.0" prefWidth="305.0" text="2023-04-16" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="40.0" />
          </font>
