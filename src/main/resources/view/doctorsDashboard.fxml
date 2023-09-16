@@ -19,7 +19,7 @@
       <JFXButton fx:id="homeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="70.0" layoutY="451.0" minHeight="66.0" onAction="#homeBtnOnAction" prefWidth="66.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" textFill="WHITE" />
       <JFXButton fx:id="patientBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="70.0" layoutY="546.0" minHeight="66.0" onAction="#patientBtnOnAction" prefWidth="66.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" textFill="WHITE" />
       <JFXButton fx:id="logoutBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="-8.0" layoutY="985.0" minHeight="65.0" onAction="#logoutBtnOnAction" prefWidth="177.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" textFill="WHITE" />
-      <AnchorPane fx:id="rootPane" layoutX="213.0" layoutY="121.0" prefHeight="846.0" prefWidth="1547.0" />
+      <AnchorPane fx:id="load" layoutX="213.0" layoutY="121.0" prefHeight="846.0" prefWidth="1547.0" />
       <JFXTextField fx:id="SearchBar" focusColor="WHITE" layoutX="963.0" layoutY="36.0" prefHeight="50.0" prefWidth="538.0" promptText="Search" unFocusColor="WHITE">
          <font>
             <Font size="20.0" />

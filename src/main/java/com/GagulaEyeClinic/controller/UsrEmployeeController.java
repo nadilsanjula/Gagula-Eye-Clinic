@@ -62,7 +62,7 @@ public class UsrEmployeeController {
 
     @FXML
     void btnViewOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrViewSuppliers.fxml"));
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrViewEmployee.fxml"));
         employeePane.getChildren().clear();
         employeePane.getChildren().add(load);
 

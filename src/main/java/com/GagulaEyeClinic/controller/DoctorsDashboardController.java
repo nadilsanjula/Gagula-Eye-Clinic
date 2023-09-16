@@ -47,15 +47,18 @@ public class DoctorsDashboardController {
     private Label lblHeading;
 
     @FXML
+    private AnchorPane load;
+
+    @FXML
     void SearchBtnOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void homeBtnOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/docDash.fxml"));
-        rootPane.getChildren().clear();
-        rootPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/docDash.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
     }
 
     @FXML
@@ -72,8 +75,8 @@ public class DoctorsDashboardController {
 
     @FXML
     void patientBtnOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/docPetient.fxml"));
-        rootPane.getChildren().clear();
-        rootPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/docPetient.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
     }
 }

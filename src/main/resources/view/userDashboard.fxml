@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="userSecPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GagulaEyeClinic.controller.UserDashboardController">
    <children>
       <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
@@ -25,7 +24,7 @@
       <JFXButton fx:id="btnRawMaterial" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="70.0" layoutY="682.0" minHeight="66.0" onAction="#btnRawMaterialOnAction" prefWidth="66.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" textFill="WHITE" />
       <JFXButton fx:id="btnEmployees" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="70.0" layoutY="768.0" minHeight="66.0" onAction="#btnEmployeesOnAction" prefWidth="66.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" textFill="WHITE" />
       <JFXButton fx:id="logoutBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="-8.0" layoutY="985.0" minHeight="65.0" onAction="#logoutBtnOnAction" prefWidth="177.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" textFill="WHITE" />
-      <AnchorPane layoutX="213.0" layoutY="121.0" prefHeight="846.0" prefWidth="1547.0" />
+      <AnchorPane fx:id="load" layoutX="213.0" layoutY="121.0" prefHeight="846.0" prefWidth="1547.0" />
       <Label fx:id="lblTime" layoutX="1702.0" layoutY="968.0" prefHeight="76.0" prefWidth="143.0" text="09:26" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="55.0" />

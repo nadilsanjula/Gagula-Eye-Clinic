@@ -58,55 +58,58 @@ public class UserDashboardController {
     private Label lblHeading;
 
     @FXML
+    private AnchorPane load;
+
+    @FXML
     void SearchBtnOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void btnAppoimentsOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrAppointments.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/usrAppointments.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 
     @FXML
     void btnEmployeesOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrEmployee.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/usrEmployee.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 
     @FXML
     void btnMedicineOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrMedicine.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/usrMedicine.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 
     @FXML
     void btnRawMaterialOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrRawMaterials.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/usrRawMaterials.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 
     @FXML
     void btnSuppliersOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/userPatients.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/userPatients.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 
     @FXML
     void homeBtnOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/usrDash.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/usrDash.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 
@@ -120,9 +123,9 @@ public class UserDashboardController {
 
     @FXML
     void patientBtnOnAction(ActionEvent event) throws IOException {
-        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/userPatients.fxml"));
-        userSecPane.getChildren().clear();
-        userSecPane.getChildren().add(load);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/userPatients.fxml"));
+        load.getChildren().clear();
+        load.getChildren().add(root);
 
     }
 

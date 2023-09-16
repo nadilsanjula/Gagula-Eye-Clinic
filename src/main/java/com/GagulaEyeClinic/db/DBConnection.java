@@ -1,20 +1,32 @@
 package com.GagulaEyeClinic.db;
 
-        import java.sql.Connection;
-        import java.sql.DriverManager;
-        import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBConnection {
+    private final static String URL = "jdbc:mysql://localhost:3306/heeeeee";
+    private final static Properties props = new Properties();
+
+    static {
+        props.setProperty("user", "root");
+        props.setProperty("password", "Nadil7288@");
+    }
+
     private static DBConnection dbConnection;
     private Connection connection;
 
-    private DBConnection() throws ClassNotFoundException, SQLException, SQLException, SQLException {
-        //Class.forName("com.mysql.cj.jdbc.Driver");
-
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eyeClinic?allowPublicKeyRetrieval=true&useSSL=false", "root", "1234");
+    private DBConnection() throws SQLException {
+        connection = DriverManager.getConnection(URL, props);
     }
-    public static DBConnection getInstance() throws SQLException, ClassNotFoundException {
-        return (null == dbConnection) ? dbConnection = new DBConnection() : dbConnection;
+
+    public static DBConnection getInstance() throws SQLException {
+        if(dbConnection == null) {
+            return dbConnection = new DBConnection();
+        } else {
+            return dbConnection;
+        }
     }
     public Connection getConnection() {
         return connection;
