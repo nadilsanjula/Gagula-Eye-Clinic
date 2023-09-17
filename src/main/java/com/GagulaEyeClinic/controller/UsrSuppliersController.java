@@ -82,9 +82,37 @@ public class UsrSuppliersController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        try {
+            // Assuming you have a way to identify the selected supplier for deletion.
+            UserSupplierDTO userSupplierDTO = getSelectedSupplier();
 
+            // Check if a supplier is selected before attempting deletion.
+            if (userSupplierDTO != null) {
+                String supId = userSupplierDTO.getSupId(); // Get the supId from the DTO
+
+                boolean isDeleted = UserSupplierModel.delete(supId);
+
+                if (isDeleted) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Deleted successfully :) !!!").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Deletion failed :( !!!").show();
+                }
+            } else {
+                new Alert(Alert.AlertType.ERROR, "No supplier selected for deletion.").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // You can add any cleanup code here if needed.
+        }
     }
 
+    // You'll need a method to get the selected supplier from your UI.
+    private UserSupplierDTO getSelectedSupplier() {
+        // Implement logic to retrieve the selected supplier, e.g., from a list or table.
+        // Return the selected UserSupplierDTO or null if no supplier is selected.
+        return null;
+    }
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
 

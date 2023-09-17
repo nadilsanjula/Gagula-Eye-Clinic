@@ -20,4 +20,12 @@ public class UserSupplierModel {
         boolean isSaved = CrudUtil.execute(sql, UserSupplierDTO.getSupId(), UserSupplierDTO.getName(), UserSupplierDTO.getAddress(), UserSupplierDTO.getNic(), UserSupplierDTO.getContactNum());
         return isSaved;
     }
+
+
+    public static boolean delete(String supId) throws SQLException {
+        String sql = "DELETE FROM supplier WHERE supId = ?";
+
+        boolean isDeleted = CrudUtil.execute(sql, supId);
+        return isDeleted;
+    }
 }
