@@ -137,7 +137,7 @@ public class UserDashboardController {
 
     @FXML
     void btnSuppliersOnAction(ActionEvent event) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/userPatients.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/usrSuppliers.fxml"));
         load.getChildren().clear();
         load.getChildren().add(root);
 

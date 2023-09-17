@@ -1,15 +1,23 @@
 package com.GagulaEyeClinic.controller;
 
+import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-
+import com.GagulaEyeClinic.model.UserSupplierModel;
 import java.io.IOException;
+import java.sql.SQLException;
+import javafx.fxml.Initializable;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class UsrSuppliersController {
+
+public class UsrSuppliersController implements Initializable {
 
     @FXML
     private AnchorPane suppliersPane;
@@ -43,6 +51,32 @@ public class UsrSuppliersController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String supId = txtSupplierId.getText();
+        String name = txtSupplierName.getText();
+        String address = txtSupplierAddress.getText();
+        String nic = txtNic.getText();
+        String contactNum = txtContactNo.getText();
+
+
+        UserSupplierDTO userSupplierDTO = new UserSupplierDTO(supId,name,address,nic,contactNum);
+
+
+        try {
+            boolean isSaved = UserSupplierModel.save(userSupplierDTO);
+
+
+            if (isSaved) {
+
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved :) !!!").show();
+
+            } else {
+
+                new Alert(Alert.AlertType.ERROR, "Not saved :) !!!").show();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -64,4 +98,8 @@ public class UsrSuppliersController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

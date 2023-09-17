@@ -9,9 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
-
 import java.sql.SQLException;
-
 import javafx.scene.control.Alert;
 
 public class UsrMedicineController {
@@ -50,7 +48,7 @@ public class UsrMedicineController {
         String description = txtDiscription.getText();
 
 
-        UserMedicineDTO userMedicineDTO = new UserMedicineDTO(medId, name,description);
+        UserMedicineDTO userMedicineDTO = new UserMedicineDTO(medId,name,description);
 
 
         try {
