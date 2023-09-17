@@ -15,7 +15,7 @@ public class DBConnection {
     }
 
     private static DBConnection dbConnection;
-    private Connection connection;
+    private static Connection connection;
 
     private DBConnection() throws SQLException {
         connection = DriverManager.getConnection(URL, props);
@@ -28,7 +28,7 @@ public class DBConnection {
             return dbConnection;
         }
     }
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 }

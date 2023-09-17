@@ -17,3 +17,4 @@ public class UserSupplierDTO {
     private String contactNum;
 
 }
+
