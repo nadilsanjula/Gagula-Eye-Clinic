@@ -1,6 +1,6 @@
 package com.GagulaEyeClinic.controller;
 
-import com.GagulaEyeClinic.dto.MedicineDTO;
+import com.GagulaEyeClinic.dto.UserMedicineDTO;
 import com.GagulaEyeClinic.model.UserMedicineModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -50,11 +50,11 @@ public class UsrMedicineController {
         String description = txtDiscription.getText();
 
 
-        MedicineDTO medicineDTO = new MedicineDTO(medId, name,description);
+        UserMedicineDTO userMedicineDTO = new UserMedicineDTO(medId, name,description);
 
 
         try {
-            boolean isSaved = UserMedicineModel.save(medicineDTO);
+            boolean isSaved = UserMedicineModel.save(userMedicineDTO);
 
 
             if (isSaved) {

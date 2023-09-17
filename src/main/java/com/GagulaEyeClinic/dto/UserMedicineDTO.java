@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 
-public class MedicineDTO {
+public class UserMedicineDTO {
     private String medId;
     private String name;
     private String description;
