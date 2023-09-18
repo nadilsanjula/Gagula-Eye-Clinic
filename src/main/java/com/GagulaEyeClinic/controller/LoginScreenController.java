@@ -80,7 +80,7 @@ public class LoginScreenController {
         // Check for user role based on username
         if ("user".equals(username)) {
             // User role
-            String validUserPassword = "user1234";
+            String validUserPassword = "1234";
 
             if (password.equals(validUserPassword)) {
                 // Username and password are correct for the user role, proceed to userDashboard
@@ -89,7 +89,7 @@ public class LoginScreenController {
             }
         } else if ("doctor".equals(username)) {
             // Doctor role
-            String validDoctorPassword = "doctor1234";
+            String validDoctorPassword = "1234";
 
             if (password.equals(validDoctorPassword)) {
                 // Username and password are correct for the doctor role, proceed to doctorDashboard

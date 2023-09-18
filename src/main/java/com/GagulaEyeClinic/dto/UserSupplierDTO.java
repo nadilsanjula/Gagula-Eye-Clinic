@@ -16,5 +16,6 @@ public class UserSupplierDTO {
     private String nic;
     private String contactNum;
 
+
 }
 

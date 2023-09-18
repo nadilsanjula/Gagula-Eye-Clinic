@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -33,14 +34,18 @@
       </Label>
       <AnchorPane fx:id="pic01Pane" layoutX="213.0" layoutY="330.0" prefHeight="301.0" prefWidth="300.0">
          <children>
-            <ImageView fx:id="pic01ImgPane" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-            <JFXButton fx:id="btnSelectBtn01" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onAction="#btnSelectBtn01OnAction" prefHeight="300.0" prefWidth="300.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" textFill="WHITE" />
+            <ImageView fx:id="pic01ImgPane" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <image>
+                  <Image url="@../assets/icons/Human.png" />
+               </image></ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pic02Pane" layoutX="968.0" layoutY="330.0" prefHeight="300.0" prefWidth="300.0">
          <children>
-            <ImageView fx:id="pic02ImgPane" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="btnSelectPic02" contentDisplay="GRAPHIC_ONLY" onAction="#btnSelectPic02OnAction" prefHeight="300.0" prefWidth="300.0" />
+            <ImageView fx:id="pic02ImgPane" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/icons/Human.png" />
+               </image></ImageView>
          </children>
       </AnchorPane>
       <Label layoutX="732.0" layoutY="653.0" text="Scanning" textFill="WHITE">
@@ -63,5 +68,7 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <JFXButton layoutX="332.0" layoutY="680.0" onAction="#pic1AddOnAction" style="-fx-background-color: red;" text="chooseBtn1" />
+      <JFXButton layoutX="1139.0" layoutY="671.0" onAction="#pic2AddOnAction" style="-fx-background-color: red;" text="chooseBtn2" />
    </children>
 </AnchorPane>
