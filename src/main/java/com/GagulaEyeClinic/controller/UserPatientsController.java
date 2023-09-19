@@ -7,6 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 import java.io.IOException;
 
@@ -19,7 +22,7 @@ public class UserPatientsController {
     private JFXTextField txtPatientAge;
 
     @FXML
-    private JFXComboBox<?> comBoxGender;
+    private JFXComboBox<String> comBoxGender;
 
     @FXML
     private JFXTextField txtPatientId;
@@ -48,6 +51,15 @@ public class UserPatientsController {
     @FXML
     private JFXButton btnView;
 
+
+    @FXML
+    void initialize() {
+        ObservableList<String> genderOptions = FXCollections.observableArrayList("Male", "Female");
+        comBoxGender.setItems(genderOptions);
+    }
+
+
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
@@ -73,7 +85,11 @@ public class UserPatientsController {
 
     @FXML
     void comBoxPatientIdOnAction(ActionEvent event) {
-
+        String selectedGender = (String) comBoxGender.getValue();
+        if (selectedGender != null) {
+            System.out.println("Selected Gender: " + selectedGender);
+            // Add your action handling code here
+        }
     }
 
 }
