@@ -69,7 +69,7 @@ public class UsrViewSuppliersController implements Initializable {
         try {
             List<UserSupplierDTO> userSupplierDTOS = UserSupplierModel.getAll();
             for (UserSupplierDTO userSupplierDTO :userSupplierDTOS){
-                obList.add(new UserSupplierDTO(userSupplierDTO.getSupId(), userSupplierDTO.getName(), userSupplierDTO.getAddress(), userSupplierDTO.getNic(), userSupplierDTO.getContactNum()));
+                obList.add(new UserSupplierDTO(userSupplierDTO.getSupId(), userSupplierDTO.getName(), userSupplierDTO.getAddress(),  userSupplierDTO.getNic(), userSupplierDTO.getContactNum()));
                 System.out.println("10"); }
             tblViewSuppliers.setItems(obList);
         } catch (SQLException e) {

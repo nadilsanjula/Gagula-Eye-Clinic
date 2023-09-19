@@ -15,7 +15,7 @@
          </font>
       </JFXTextField>
       <JFXComboBox fx:id="comBoxGender" editable="true" focusColor="WHITE" layoutX="774.0" layoutY="557.0" onAction="#comBoxPatientIdOnAction" prefHeight="55.0" prefWidth="352.0" promptText="Gender" style="-fx-font-size: 25;" unFocusColor="WHITE" visibleRowCount="5" />
-      <JFXTextField fx:id="txtPatientId" focusColor="WHITE" layoutX="232.0" layoutY="252.0" promptText="Patient id" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtPatientId" focusColor="WHITE" layoutX="232.0" layoutY="252.0" onAction="#patIdOnAction" promptText="Patient id" unFocusColor="WHITE">
          <font>
             <Font size="30.0" />
          </font>

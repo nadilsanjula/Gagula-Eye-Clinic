@@ -13,9 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.Initializable;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.scene.input.KeyCode;
 
 
 public  class UsrSuppliersController implements Initializable {
@@ -61,7 +59,7 @@ public  class UsrSuppliersController implements Initializable {
         String contactNum = txtContactNo.getText();
 
 
-        UserSupplierDTO userSupplierDTO = new UserSupplierDTO(supId,name,address,nic,contactNum);
+        UserSupplierDTO userSupplierDTO = new UserSupplierDTO(supId,name,address, nic,contactNum);
 
 
         try {
