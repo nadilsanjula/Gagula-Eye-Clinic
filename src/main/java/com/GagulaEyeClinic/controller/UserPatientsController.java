@@ -57,6 +57,9 @@ public class UserPatientsController {
     @FXML
     private JFXButton btnView;
 
+    @FXML
+    private JFXTextField txtDoctorId1;
+
 
     @FXML
     void initialize() {
@@ -75,10 +78,11 @@ public class UserPatientsController {
         String nic = txtPatientNIC.getText();
         String contactNum = txtContactNo.getText();
         String gender = comBoxGender.getValue();
+        String docId = txtDoctorId1.getText();
 
 
 
-        UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender);
+        UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender,docId);
 
             try {
                 boolean isSaved = UserPatientModel.save(userPatientDTO);
@@ -135,6 +139,7 @@ public class UserPatientsController {
                 txtContactNo.setText(userPatientDTO.getContactNum());
                 txtPatientAge.setText(String.valueOf(userPatientDTO.getAge()));
                 comBoxGender.setValue(userPatientDTO.getGender());
+                txtDoctorId1.setText(userPatientDTO.getDocId());
 
             }else {
                 new Alert(Alert.AlertType.ERROR,"Invalid ID").show();
