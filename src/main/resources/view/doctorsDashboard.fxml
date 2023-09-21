@@ -36,10 +36,5 @@
             <Font name="Segoe UI" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lblHeading" layoutX="257.0" layoutY="25.0" prefHeight="94.0" prefWidth="592.0" text="Label 01" textFill="WHITE">
-         <font>
-            <Font size="65.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
