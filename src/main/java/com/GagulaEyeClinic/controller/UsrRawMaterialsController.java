@@ -1,7 +1,9 @@
 package com.GagulaEyeClinic.controller;
 
+import com.GagulaEyeClinic.dto.UserPatientDTO;
 import com.GagulaEyeClinic.dto.UserRawMaterialDTO;
 import com.GagulaEyeClinic.dto.UserSupplierDTO;
+import com.GagulaEyeClinic.model.UserPatientModel;
 import com.GagulaEyeClinic.model.UserRawMaterialModel;
 import com.GagulaEyeClinic.model.UserSupplierModel;
 import com.jfoenix.controls.JFXButton;
@@ -65,8 +67,6 @@ public class UsrRawMaterialsController implements Initializable {
         String name = txtMaterialName.getText();
         int qty = Integer.parseInt(txtQty.getText());
         String category = txtCategory.getText();
-
-        // Use getValue() to get the selected item from the combo box
         String supId = comBoxSupplieid.getValue();
 
         UserRawMaterialDTO userRawMaterialDTO = new UserRawMaterialDTO(rawId, name, qty, category, supId);
@@ -88,12 +88,6 @@ public class UsrRawMaterialsController implements Initializable {
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
         String rawId = txtMaterialId.getText();
-        /*String name = txtMaterialName.getText();
-        int qty = Integer.parseInt(txtQty.getText());
-        String category = txtCategory.getText();
-        String supId = comBoxSupplieid.getValue();*/
-
-        /*UserRawMaterialDTO userRawMaterialDTO = new UserRawMaterialDTO(rawId, name, qty, category, supId);*/
 
         try {
             boolean isRemoved = UserRawMaterialModel.remove(rawId);
@@ -123,14 +117,17 @@ public class UsrRawMaterialsController implements Initializable {
         String category = txtCategory.getText();
         String supId = comBoxSupplieid.getValue();
 
-        UserRawMaterialDTO userRawMaterialDTO = new UserRawMaterialDTO(rawId, name, qty, category, supId);
-
+        boolean isUpdated = false;
         try {
-            boolean isUpdated = UserRawMaterialModel.update(userRawMaterialDTO);
-
+            isUpdated = UserRawMaterialModel.update(new UserRawMaterialDTO(rawId, name, qty,category, supId));
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Updated successfully").show();
-                observableList.clear();
+                txtMaterialId.setText("");
+                txtMaterialName.setText("");
+                txtQty.setText("");
+                txtCategory.setText("");
+                comBoxSupplieid.setValue("");
+
             } else {
                 new Alert(Alert.AlertType.ERROR, "Update failed").show();
             }
@@ -152,10 +149,6 @@ public class UsrRawMaterialsController implements Initializable {
 
     }
 
-    @FXML
-    void comBoxSupplieidOnAction(ActionEvent event) {
-
-    }
     @FXML
     void txtIdOnAction(ActionEvent event) {
         String rawId = txtMaterialId.getText();

@@ -1,6 +1,7 @@
 package com.GagulaEyeClinic.model;
 
 import com.GagulaEyeClinic.dto.UserRawMaterialDTO;
+import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.GagulaEyeClinic.util.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,14 +48,23 @@ public class UserRawMaterialModel {
         return CrudUtil.execute(sql,rawId);
     }
 
+    public static List<UserRawMaterialDTO> getAll() throws SQLException {
+        String sql = "SELECT * FROM rawMaterial";
+        ResultSet resultSet = CrudUtil.execute(sql);
+        List<UserRawMaterialDTO> data = new ArrayList<>();
+        while (resultSet.next()) {
+            UserRawMaterialDTO userRawMaterialDTO = new UserRawMaterialDTO(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getInt(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5)
 
-//    public static List<UserRawMaterialDTO> getAll() throws SQLException {
-//        String sql = "SELECT * FROM rawMaterial";
-//        ResultSet resultSet = CrudUtil.execute(sql);
-//        List<UserRawMaterialDTO> data = new ArrayList<>();
-//        while (resultSet.next()){
-//            data.add(new UserRawMaterialDTO(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getString(4),resultSet.getString(5)));
-//        }return data;
-//    }
+            );
+            data.add(userRawMaterialDTO);
+        }
+        return data;
+    }
+
 }
 

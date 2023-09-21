@@ -3,6 +3,12 @@ package com.GagulaEyeClinic.controller;
 import com.GagulaEyeClinic.dto.UserPatientDTO;
 import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.GagulaEyeClinic.model.UserSupplierModel;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -19,7 +25,10 @@ import com.GagulaEyeClinic.model.UserPatientModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class UserPatientsController implements Initializable {
@@ -93,6 +102,31 @@ public class UserPatientsController implements Initializable {
             } catch (Exception e) {
             e.printStackTrace();
             }
+
+        String textToEncode = "patId + name + address";
+        String filePath = "qr-code.png"; // Output file path
+
+        int width = 300; // Width of the QR code image
+        int height = 300; // Height of the QR code image
+
+        try {
+            // Create a QR code writer
+            MultiFormatWriter writer = new MultiFormatWriter();
+
+            // Set up encoding hints (optional)
+            Map<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+
+            // Generate a QR code matrix
+            BitMatrix bitMatrix = writer.encode(textToEncode, BarcodeFormat.QR_CODE, width, height, hints);
+
+            // Convert the matrix to an image and save it to a file
+            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", Paths.get(filePath));
+
+            System.out.println("QR Code generated successfully!");
+        } catch (WriterException | IOException e) {
+            e.printStackTrace();
+}
     }
 
     @FXML
