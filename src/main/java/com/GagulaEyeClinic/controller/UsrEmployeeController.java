@@ -65,7 +65,34 @@ public class UsrEmployeeController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+      /*  String empId = txtEmployeeId.getText();
+        String name = txtEmployeeName.getText();
+        String address = txtAddress.getText();
+        String contactNum = txtContactNo.getText();
+        String jobRole = txtJobRole.getText();
+        LocalDate joinedDate = dtePicker.getValue();
 
+        try {
+            boolean isSaved = UserEmployeeModel.save(new UserEmployeeDTO(empId, name, address, contactNum, jobRole, joinedDate));
+
+
+            if (isSaved) {
+
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved  !!!").show();
+                txtEmployeeId.setText("");
+                txtEmployeeName.setText("");
+                txtAddress.setText("");
+                txtContactNo.setText("");
+                txtJobRole.setText("");
+                dtePicker.setValue(null);
+            } else {
+
+                new Alert(Alert.AlertType.ERROR, "Not saved  !!!").show();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
 
     }
 
