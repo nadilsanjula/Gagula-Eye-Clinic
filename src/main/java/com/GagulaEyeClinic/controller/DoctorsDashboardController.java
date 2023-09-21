@@ -82,6 +82,17 @@ public class DoctorsDashboardController {
         ));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        AnchorPane root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/view/docDash.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        load.getChildren().clear();
+        load.getChildren().add(root);
+
+
     }
 
 
