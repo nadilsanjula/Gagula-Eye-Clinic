@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="patientDetailsPane" prefHeight="846.0" prefWidth="1547.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GagulaEyeClinic.controller.DocPetientController">
    <children>
-      <JFXTextField fx:id="txtPatientId" focusColor="WHITE" layoutX="126.0" layoutY="222.0" promptText="Patient id" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtPatientId" focusColor="WHITE" layoutX="126.0" layoutY="222.0" onAction="#patIdOnAction" promptText="Patient id" unFocusColor="WHITE">
          <font>
             <Font size="30.0" />
          </font>
