@@ -103,7 +103,7 @@ public class UserPatientsController implements Initializable {
             e.printStackTrace();
             }
 
-        String textToEncode = "patId + name + address";
+        String textToEncode = "Patient Id = "+ patId + "Patient name = " +"Name = " + name + "Address = "+address + "Age = " + age +"NIC = " + nic + "Contact Number = " + contactNum + "Gender = "+ gender +"Doctor ID = "+ docId;
         String filePath = "qr-code.png"; // Output file path
 
         int width = 300; // Width of the QR code image
