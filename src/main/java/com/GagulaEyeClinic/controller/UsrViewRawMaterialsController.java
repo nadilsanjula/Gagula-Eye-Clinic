@@ -31,7 +31,7 @@ public class UsrViewRawMaterialsController implements Initializable {
     private AnchorPane usrViewRawMaterialsPane;
 
     @FXML
-    private TableView<UserRawMaterialDTO> tblViewRawMaterials;
+    private TableView tblViewRawMaterials;
 
   
 

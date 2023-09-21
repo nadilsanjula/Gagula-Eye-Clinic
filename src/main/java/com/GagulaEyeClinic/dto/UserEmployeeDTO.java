@@ -13,7 +13,7 @@ public class UserEmployeeDTO {
     private String jobRole;
     private String contactNum;
 
-    private String date;
+    private String joinedDate;
 
 
 }

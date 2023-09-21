@@ -29,7 +29,7 @@
             <Font size="30.0" />
          </font>
       </JFXTextField>
-      <JFXComboBox fx:id="comBoxSupplieid" editable="true" focusColor="WHITE" layoutX="766.0" layoutY="292.0" onAction="#comBoxSupplieidOnAction" prefHeight="55.0" prefWidth="352.0" promptText="Supplie Id" style="-fx-font-size: 30;" unFocusColor="WHITE" visibleRowCount="5" />
+      <JFXComboBox fx:id="colSupplierID" editable="true" focusColor="WHITE" layoutX="766.0" layoutY="292.0" prefHeight="55.0" prefWidth="352.0" promptText="Supplie Id" style="-fx-font-size: 30;" unFocusColor="WHITE" visibleRowCount="5" />
       <JFXButton fx:id="btnAdd" layoutX="743.0" layoutY="729.0" onAction="#btnAddOnAction" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 10; -fx-background-color: #1B5065; -fx-border-radius: 10; -fx-border-color: #5C6CFF;" text="Add" textFill="WHITE">
          <font>
             <Font size="25.0" />

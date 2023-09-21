@@ -60,9 +60,8 @@ public class UsrViewSuppliersController implements Initializable {
                         new UserSupplierDTO(
                         userSupplierDTO.getSupId(),
                         userSupplierDTO.getName(),
-                        userSupplierDTO.getAddress(),
+                        userSupplierDTO.getAddress(), userSupplierDTO.getEmail(),
                         userSupplierDTO.getNic(),
-                        userSupplierDTO.getEmail(),
                         userSupplierDTO.getContactNum()
                 ));
             }
@@ -77,8 +76,8 @@ public class UsrViewSuppliersController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("supId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colContactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
     }
 }

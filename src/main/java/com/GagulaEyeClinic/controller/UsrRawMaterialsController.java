@@ -27,6 +27,9 @@ import java.util.ResourceBundle;
 public class UsrRawMaterialsController implements Initializable {
 
     @FXML
+    public JFXComboBox colSupplierID;
+
+    @FXML
     private AnchorPane rawMaterialsPane;
 
     @FXML
@@ -40,9 +43,6 @@ public class UsrRawMaterialsController implements Initializable {
 
     @FXML
     private JFXTextField txtCategory;
-
-    @FXML
-    private JFXComboBox<String> comBoxSupplieid;
 
     @FXML
     private JFXButton btnAdd;
@@ -65,9 +65,9 @@ public class UsrRawMaterialsController implements Initializable {
     void btnAddOnAction(ActionEvent event) {
         String rawId = txtMaterialId.getText();
         String name = txtMaterialName.getText();
-        int qty = Integer.parseInt(txtQty.getText());
+        Integer qty = Integer.valueOf(txtQty.getText());
         String category = txtCategory.getText();
-        String supId = comBoxSupplieid.getValue();
+        String supId = (String) colSupplierID.getValue();
 
         UserRawMaterialDTO userRawMaterialDTO = new UserRawMaterialDTO(rawId, name, qty, category, supId);
 
@@ -98,7 +98,7 @@ public class UsrRawMaterialsController implements Initializable {
                 txtMaterialName.setText("");
                 txtQty.setText("");
                 txtCategory.setText("");
-                comBoxSupplieid.getValue();
+                colSupplierID.getValue();
                 observableList.clear();
 
             } else {
@@ -115,7 +115,7 @@ public class UsrRawMaterialsController implements Initializable {
         String name = txtMaterialName.getText();
         int qty = Integer.parseInt(txtQty.getText());
         String category = txtCategory.getText();
-        String supId = comBoxSupplieid.getValue();
+        String supId = (String) colSupplierID.getValue();
 
         boolean isUpdated = false;
         try {
@@ -126,7 +126,7 @@ public class UsrRawMaterialsController implements Initializable {
                 txtMaterialName.setText("");
                 txtQty.setText("");
                 txtCategory.setText("");
-                comBoxSupplieid.setValue("");
+                colSupplierID.setValue("");
 
             } else {
                 new Alert(Alert.AlertType.ERROR, "Update failed").show();
@@ -160,7 +160,7 @@ public class UsrRawMaterialsController implements Initializable {
                txtMaterialName.setText(userRawMaterialDTO.getName());
                 txtQty.setText(String.valueOf(userRawMaterialDTO.getQty()));
                 txtCategory.setText(userRawMaterialDTO.getCategory());
-                comBoxSupplieid.setValue(userRawMaterialDTO.getSupId());
+                colSupplierID.setValue(userRawMaterialDTO.getSupId());
             }else {
                 new Alert(Alert.AlertType.ERROR,"Invalid ID").show();
             }

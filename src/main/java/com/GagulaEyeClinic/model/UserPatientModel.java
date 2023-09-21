@@ -1,6 +1,5 @@
 package com.GagulaEyeClinic.model;
 
-import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.GagulaEyeClinic.util.CrudUtil;
 import com.GagulaEyeClinic.dto.UserPatientDTO;
 

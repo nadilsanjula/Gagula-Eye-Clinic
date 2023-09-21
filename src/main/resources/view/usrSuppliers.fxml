@@ -58,7 +58,7 @@
                 <Font size="25.0" />
             </font>
         </JFXButton>
-      <JFXTextField fx:id="txtEmail" focusColor="WHITE" layoutX="1186.0" layoutY="324.0" promptText="Supplier Nic" text="Supplier Email" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtEmail" focusColor="WHITE" layoutX="1186.0" layoutY="324.0" promptText="Supplier E-Mail" unFocusColor="WHITE">
          <font>
             <Font size="30.0" />
          </font>

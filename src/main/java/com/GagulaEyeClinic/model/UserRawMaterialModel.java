@@ -1,15 +1,16 @@
 package com.GagulaEyeClinic.model;
 
 import com.GagulaEyeClinic.dto.UserRawMaterialDTO;
-import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.GagulaEyeClinic.util.CrudUtil;
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserRawMaterialModel {
+public class UserRawMaterialModel{
     public static boolean save(UserRawMaterialDTO UserRawMaterialDTO) throws SQLException {
 
         String sql = "INSERT INTO rawMaterial(rawId,name,qty,category,supId) VALUES(?,?,?,?,?)";
