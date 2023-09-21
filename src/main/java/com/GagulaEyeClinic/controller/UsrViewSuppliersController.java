@@ -26,6 +26,10 @@ public class UsrViewSuppliersController implements Initializable {
     public TableView tblSuppliers;
     public TableColumn colId;
     public TableColumn colName;
+    public TableColumn address;
+    public TableColumn colNic;
+    public TableColumn colEmail;
+    public TableColumn colContactNum;
     @FXML
     private AnchorPane usrViewSuppliersPane;
 
@@ -58,10 +62,10 @@ public class UsrViewSuppliersController implements Initializable {
                         userSupplierDTO.getName(),
                         userSupplierDTO.getAddress(),
                         userSupplierDTO.getNic(),
+                        userSupplierDTO.getEmail(),
                         userSupplierDTO.getContactNum()
                 ));
             }
-            System.out.println(list.size()+"---------------");
             tblSuppliers.setItems(list);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,14 +74,11 @@ public class UsrViewSuppliersController implements Initializable {
 
     private void setCellValueFactory() {
 
-     /*   colSupID.setCellValueFactory(new PropertyValueFactory<>("supId"));
-        colSupName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colSupAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
-        colContactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));*/
-
-
         colId.setCellValueFactory(new PropertyValueFactory<>("supId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colContactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
     }
 }

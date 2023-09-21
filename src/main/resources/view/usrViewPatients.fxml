@@ -9,18 +9,7 @@
 
 <AnchorPane fx:id="usrViewPatientsPane" prefHeight="846.0" prefWidth="1547.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GagulaEyeClinic.controller.UsrViewPatientsController">
    <children>
-      <TableView fx:id="tblPatientDetails" fixedCellSize="2.0" layoutX="71.0" layoutY="234.0" prefHeight="491.0" prefWidth="1401.0">
-        <columns>
-          <TableColumn fx:id="colPatientId" prefWidth="165.6666717529297" text="Patient Id" />
-          <TableColumn fx:id="colPatientName" prefWidth="309.3333435058594" text="Patient  Name" />
-            <TableColumn fx:id="colPatienrAddress" prefWidth="304.6666564941406" text="Patient Address" />
-            <TableColumn fx:id="colPatientNIC" prefWidth="188.66668701171875" text="Patient NIC" />
-            <TableColumn fx:id="colPatientAge" prefWidth="97.66668701171875" text="Patient Age" />
-            <TableColumn fx:id="colContactNo" prefWidth="217.3333740234375" text="Contact No" />
-            <TableColumn fx:id="colGender" prefWidth="119.3333740234375" text="Gender" />
-        </columns>
-      </TableView>
-      <Label layoutX="588.0" layoutY="-20.0" opacity="0.6" prefHeight="292.0" prefWidth="959.0" text="View Patients " textFill="WHITE">
+      <Label layoutX="567.0" layoutY="-7.0" opacity="0.6" prefHeight="292.0" prefWidth="959.0" text="View Patients " textFill="WHITE">
          <font>
             <Font size="150.0" />
          </font>
@@ -30,5 +19,17 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <TableView fx:id="tblPatientDetails" layoutX="128.0" layoutY="223.0" prefHeight="491.0" prefWidth="1315.0">
+        <columns>
+          <TableColumn fx:id="colPatientId" prefWidth="98.33334350585938" text="Patient Id" />
+          <TableColumn fx:id="colPatientName" prefWidth="198.33334350585938" text="Name" />
+            <TableColumn fx:id="colPatienrAddress" prefWidth="335.66668701171875" text="Address" />
+            <TableColumn fx:id="colPatientNIC" prefWidth="148.33331298828125" text="NIC" />
+            <TableColumn fx:id="colPatientAge" prefWidth="87.66668701171875" text="Age" />
+            <TableColumn fx:id="colContactNo" prefWidth="177.66665649414062" text="Contact Number" />
+            <TableColumn fx:id="colGender" prefWidth="137.00006103515625" text="Gender" />
+            <TableColumn fx:id="colDocId" prefWidth="135.66668701171875" text="Doctor Id" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

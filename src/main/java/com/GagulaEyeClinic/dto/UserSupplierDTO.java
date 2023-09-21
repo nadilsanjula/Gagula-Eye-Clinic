@@ -14,6 +14,8 @@ public class UserSupplierDTO {
     private String name;
     private String address;
     private String nic;
+    private String email;
     private String contactNum;
+
 }
 

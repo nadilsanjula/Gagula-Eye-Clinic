@@ -11,7 +11,7 @@ public class DBConnection {
 
     static {
         props.setProperty("user", "root");
-        props.setProperty("password", "Mixage03!");
+        props.setProperty("password", "Nadil7288@");
     }
 
     private static DBConnection dbConnection;

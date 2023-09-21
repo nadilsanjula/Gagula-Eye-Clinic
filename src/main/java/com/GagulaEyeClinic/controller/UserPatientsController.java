@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.collections.FXCollections;
@@ -17,9 +18,13 @@ import com.GagulaEyeClinic.model.UserPatientModel;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class UserPatientsController {
+public class UserPatientsController implements Initializable {
+    @FXML
+    public JFXComboBox<String>  comBoxDoctorId;
 
     @FXML
     private AnchorPane usrPatientPane;
@@ -58,14 +63,9 @@ public class UserPatientsController {
     private JFXButton btnView;
 
 
-    @FXML
-    void initialize() {
-        ObservableList<String> genderOptions = FXCollections.observableArrayList("Male", "Female");
-        comBoxGender.setItems(genderOptions);
-    }
 
 
-
+    ObservableList<UserSupplierDTO> observableList = FXCollections.observableArrayList();
     @FXML
     void btnAddOnAction(ActionEvent event) {
         String patId = txtPatientId.getText();
@@ -75,9 +75,10 @@ public class UserPatientsController {
         String nic = txtPatientNIC.getText();
         String contactNum = txtContactNo.getText();
         String gender = comBoxGender.getValue();
+        String docId = comBoxDoctorId.getValue();
 
 
-        UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender);
+        UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender,docId);
 
             try {
                 boolean isSaved = UserPatientModel.save(userPatientDTO);
@@ -96,11 +97,61 @@ public class UserPatientsController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String patId = txtPatientId.getText();
+        try {
+            boolean isRemoved = UserPatientModel.remove(patId);
+
+            if (isRemoved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleted successfully").show();
+                txtPatientId.setText("");
+                txtPatientName.setText("");
+                txtPatientAddress.setText("");
+                txtPatientAge.setText("");
+                txtPatientNIC.setText("");
+                txtContactNo.setText("");
+                comBoxGender.setValue("");
+                comBoxDoctorId.setValue("");
+                observableList.clear();
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Delete failed").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String patId = txtPatientId.getText();
+        String name = txtPatientName.getText();
+        String address = txtPatientAddress.getText();
+        Integer age = Integer.parseInt(txtPatientAge.getText());
+        String nic = txtPatientNIC.getText();
+        String contactNum = txtContactNo.getText();
+        String gender = comBoxGender.getValue();
+        String docId = comBoxDoctorId.getValue();
+
+        boolean isUpdated = false;
+        try {
+            isUpdated = UserPatientModel.update(new UserPatientDTO(patId, name, address,age, nic, contactNum,gender,docId));
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated successfully").show();
+                txtPatientId.setText("");
+                txtPatientName.setText("");
+                txtPatientAddress.setText("");
+                txtPatientAge.setText("");
+                txtPatientNIC.setText("");
+                txtContactNo.setText("");
+                comBoxGender.setValue("");
+                comBoxDoctorId.setValue("");
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Update failed").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -134,6 +185,7 @@ public class UserPatientsController {
                 txtContactNo.setText(userPatientDTO.getContactNum());
                 txtPatientAge.setText(String.valueOf(userPatientDTO.getAge()));
                 comBoxGender.setValue(userPatientDTO.getGender());
+                comBoxDoctorId.setValue(userPatientDTO.getDocId());
 
             }else {
                 new Alert(Alert.AlertType.ERROR,"Invalid ID").show();
@@ -144,4 +196,13 @@ public class UserPatientsController {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> genderOptions = FXCollections.observableArrayList("Male", "Female");
+        comBoxGender.setItems(genderOptions);
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+    }
 }

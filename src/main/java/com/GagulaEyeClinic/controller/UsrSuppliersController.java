@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class UsrSuppliersController implements Initializable {
 
+    public JFXTextField txtEmail;
     @FXML
     private AnchorPane suppliersPane;
 
@@ -64,10 +65,11 @@ public class UsrSuppliersController implements Initializable {
         String name = txtSupplierName.getText();
         String address = txtSupplierAddress.getText();
         String nic = txtNic.getText();
+        String email = txtEmail.getText();
         String contactNum = txtContactNo.getText();
 
         try {
-            boolean isSaved = UserSupplierModel.save(new UserSupplierDTO(supId, name, address, nic, contactNum));
+            boolean isSaved = UserSupplierModel.save(new UserSupplierDTO(supId, name, address, nic,email, contactNum));
 
 
             if (isSaved) {
@@ -119,11 +121,12 @@ public class UsrSuppliersController implements Initializable {
         String name = txtSupplierName.getText();
         String address = txtSupplierAddress.getText();
         String nic = txtNic.getText();
+        String email = txtEmail.getText();
         String contactNum = txtContactNo.getText();
 
         boolean isUpdated = false;
         try {
-            isUpdated = UserSupplierModel.update(new UserSupplierDTO(supId, name, address, nic, contactNum));
+            isUpdated = UserSupplierModel.update(new UserSupplierDTO(supId, name, address, nic,email, contactNum));
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Updated successfully").show();
                 txtSupplierId.setText("");
@@ -160,6 +163,7 @@ public class UsrSuppliersController implements Initializable {
                 txtNic.setText(userSupplierDTO.getNic());
                 txtSupplierAddress.setText(userSupplierDTO.getAddress());
                 txtSupplierName.setText(userSupplierDTO.getName());
+                txtEmail.setText(userSupplierDTO.getEmail());
                 txtContactNo.setText(userSupplierDTO.getContactNum());
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid ID").show();
@@ -183,16 +187,4 @@ public class UsrSuppliersController implements Initializable {
 
     }
 
-   /* private void getAll() {
-        ObservableList<UserSupplierDTO> observableList = FXCollections.observableArrayList();
-        try {
-            List<UserSupplierDTO> supplierList = UserSupplierModel.getAll();
-            for(UserSupplierDTO supplier : supplierList) {
-                observableList.add(new UserSupplierDTO(supplier.getSupId(),supplier.getName(),supplier.getAddress(),supplier.getNic(),supplier.getContactNum()));
-            }
-            tblViewSuppliers.setItems(observableList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
 }

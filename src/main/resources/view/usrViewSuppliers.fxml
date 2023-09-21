@@ -6,28 +6,27 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="usrViewSuppliersPane" prefHeight="846.0" prefWidth="1547.0"
-            xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="com.GagulaEyeClinic.controller.UsrViewSuppliersController">
+
+<AnchorPane fx:id="usrViewSuppliersPane" prefHeight="846.0" prefWidth="1547.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GagulaEyeClinic.controller.UsrViewSuppliersController">
     <children>
-        <Label layoutX="546.0" layoutY="-35.0" opacity="0.6" prefHeight="292.0" prefWidth="982.0" text="View Suppliers"
-               textFill="WHITE">
+        <Label layoutX="546.0" layoutY="-35.0" opacity="0.6" prefHeight="292.0" prefWidth="982.0" text="View Suppliers" textFill="WHITE">
             <font>
-                <Font size="150.0"/>
+                <Font size="150.0" />
             </font>
         </Label>
-        <JFXButton fx:id="btnBack" layoutX="53.0" layoutY="762.0" onAction="#btnBackOnAction" prefHeight="50.0"
-                   prefWidth="169.0"
-                   style="-fx-background-radius: 10; -fx-background-color: #1B5065; -fx-border-radius: 10; -fx-border-color: white;"
-                   text="Back" textFill="WHITE">
+        <JFXButton fx:id="btnBack" layoutX="53.0" layoutY="762.0" onAction="#btnBackOnAction" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 10; -fx-background-color: #1B5065; -fx-border-radius: 10; -fx-border-color: white;" text="Back" textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font size="20.0" />
             </font>
         </JFXButton>
         <TableView fx:id="tblSuppliers" layoutX="261.0" layoutY="223.0" prefHeight="457.0" prefWidth="916.0">
             <columns>
-                <TableColumn fx:id="colId" prefWidth="75.0" text="C1"/>
-                <TableColumn fx:id="colName" prefWidth="75.0" text="C2"/>
+                <TableColumn fx:id="colId" prefWidth="88.0" text="Supplier Id" />
+                <TableColumn fx:id="colName" prefWidth="143.0" text="Name" />
+            <TableColumn fx:id="address" prefWidth="188.0" text="Address" />
+            <TableColumn fx:id="colNic" prefWidth="164.0" text="NIC" />
+            <TableColumn fx:id="colEmail" prefWidth="177.0" text="E-mail" />
+            <TableColumn fx:id="colContactNum" prefWidth="155.0" text="Contact Number" />
             </columns>
         </TableView>
     </children>
