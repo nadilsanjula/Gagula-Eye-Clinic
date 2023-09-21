@@ -1,5 +1,6 @@
 package com.GagulaEyeClinic.controller;
 
+import com.GagulaEyeClinic.db.DBConnection;
 import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.GagulaEyeClinic.model.UserSupplierModel;
 import com.jfoenix.controls.JFXButton;
@@ -14,7 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import com.GagulaEyeClinic.model.UserEmployeeModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Date;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.scene.input.KeyCode;
 import java.util.List;
@@ -24,6 +28,7 @@ import java.time.LocalDate;
 import com.jfoenix.controls.JFXDatePicker;
 
 public class UsrEmployeeController implements Initializable {
+
 
     @FXML
     private AnchorPane employeePane;
@@ -60,33 +65,7 @@ public class UsrEmployeeController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        String empId = txtEmployeeId.getText();
-        String name = txtEmployeeName.getText();
-        String address = txtAddress.getText();
-        String contactNum = txtContactNo.getText();
-        String jobRole = txtJobRole.getText();
 
-
-
-        UserEmployeeDTO userEmployeeDTO = new UserEmployeeDTO(empId,name,address,contactNum,jobRole);
-
-
-        try {
-            boolean isSaved = UserEmployeeModel.save(userEmployeeDTO);
-
-
-            if (isSaved) {
-
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved :) !!!").show();
-
-            } else {
-
-                new Alert(Alert.AlertType.ERROR, "Not saved :) !!!").show();
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -108,32 +87,6 @@ public class UsrEmployeeController implements Initializable {
         employeePane.getChildren().add(load);
 
     }
-
-    @FXML
-    void txtAddressOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtContactNoOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtEmployeeIdOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtEmployeeNameOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtJobRoleOnAction(ActionEvent event) {
-
-    }
-
 
 
     @Override

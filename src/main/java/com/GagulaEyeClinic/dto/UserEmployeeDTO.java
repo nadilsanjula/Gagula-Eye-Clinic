@@ -4,11 +4,7 @@ import lombok.*;
 
 import java.util.Date;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
+
 
 public class UserEmployeeDTO {
     private String empId;
@@ -16,5 +12,8 @@ public class UserEmployeeDTO {
     private String address;
     private String jobRole;
     private String contactNum;
+
+    private String date;
+
 
 }

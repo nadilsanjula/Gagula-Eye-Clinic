@@ -65,5 +65,10 @@
             <Font size="25.0" />
          </font>
       </JFXButton>
+      <JFXTextField fx:id="txtDocId" focusColor="WHITE" layoutX="1187.0" layoutY="251.0" promptText="Doctor Id" unFocusColor="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

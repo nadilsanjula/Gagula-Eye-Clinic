@@ -12,9 +12,9 @@ import java.util.List;
 public class UserPatientModel {
     public static boolean save(UserPatientDTO UserPatientDTO) throws SQLException {
 
-        String sql = "INSERT INTO patient(patId,name,address,age,nic,contactNum,gender) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO patient(patId,name,address,age,nic,contactNum,gender,docId) VALUES(?,?,?,?,?,?,?)";
 
-        boolean isSaved = CrudUtil.execute(sql, UserPatientDTO.getPatId(), UserPatientDTO.getName(), UserPatientDTO.getAddress(),UserPatientDTO.getAge(),UserPatientDTO.getNic(), UserPatientDTO.getContactNum(), UserPatientDTO.getGender());
+        boolean isSaved = CrudUtil.execute(sql, UserPatientDTO.getPatId(), UserPatientDTO.getName(), UserPatientDTO.getAddress(),UserPatientDTO.getAge(),UserPatientDTO.getNic(), UserPatientDTO.getContactNum(), UserPatientDTO.getGender(), UserPatientDTO.getDocId());
         return isSaved;
     }
 
@@ -32,6 +32,7 @@ public class UserPatientModel {
             userPatientDTO.setNic(resultSet.getString(5));
             userPatientDTO.setContactNum(resultSet.getString(6));
             userPatientDTO.setGender(resultSet.getString(7));
+            userPatientDTO.setDocId(resultSet.getString(8));
 
             return userPatientDTO;
         }
