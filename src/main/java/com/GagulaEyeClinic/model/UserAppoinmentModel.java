@@ -12,7 +12,7 @@ public class UserAppoinmentModel {
 
         String sql = "INSERT INTO appoinment(aptId,purpose,docId,patId) VALUES(?,?,?,?)";
 
-        boolean isSaved = CrudUtil.execute(sql,UserAppoinmentDTO.getAppId(),UserAppoinmentDTO.getPurpose(),UserAppoinmentDTO.getDocId(),UserAppoinmentDTO.getPatId());
+        boolean isSaved = CrudUtil.execute(sql,UserAppoinmentDTO.getAppId(),UserAppoinmentDTO.getPurpose(),UserAppoinmentDTO.getDocid(),UserAppoinmentDTO.getPatId());
         return isSaved;
     }
 }

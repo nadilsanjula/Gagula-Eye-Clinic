@@ -77,7 +77,6 @@ public class UserPatientsController {
         String gender = comBoxGender.getValue();
 
 
-
         UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender);
 
             try {

@@ -11,7 +11,7 @@ public class UserPatientModel {
 
         String sql = "INSERT INTO patient(patId,name,address,age,nic,contactNum,gender,docId) VALUES(?,?,?,?,?,?,?,?)";
 
-        boolean isSaved = CrudUtil.execute(sql, UserPatientDTO.getPatId(), UserPatientDTO.getName(), UserPatientDTO.getAddress(),UserPatientDTO.getAge(),UserPatientDTO.getNic(), UserPatientDTO.getContactNum(), UserPatientDTO.getGender(), UserPatientDTO.getDocId());
+        boolean isSaved = CrudUtil.execute(sql, UserPatientDTO.getPatId(), UserPatientDTO.getName(), UserPatientDTO.getAddress(),UserPatientDTO.getAge(),UserPatientDTO.getNic(), UserPatientDTO.getContactNum(), UserPatientDTO.getGender());
         return isSaved;
     }
 
@@ -29,7 +29,7 @@ public class UserPatientModel {
             userPatientDTO.setNic(resultSet.getString(5));
             userPatientDTO.setContactNum(resultSet.getString(6));
             userPatientDTO.setGender(resultSet.getString(7));
-            userPatientDTO.setDocId(resultSet.getString(8));
+
 
             return userPatientDTO;
         }
