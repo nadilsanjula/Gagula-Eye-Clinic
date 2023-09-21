@@ -1,6 +1,5 @@
 package com.GagulaEyeClinic.controller;
 
-import com.GagulaEyeClinic.db.DBConnection;
 import com.GagulaEyeClinic.dto.UserPatientDTO;
 import com.GagulaEyeClinic.dto.UserSupplierDTO;
 import com.GagulaEyeClinic.model.UserSupplierModel;
@@ -10,7 +9,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.collections.FXCollections;
@@ -19,27 +17,9 @@ import com.GagulaEyeClinic.model.UserPatientModel;
 
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Properties;
-import java.util.ResourceBundle;
 
-public class UserPatientsController implements Initializable {
-
-    private final static String URL = "jdbc:mysql://localhost:3306/gagulawedamadura";
-    private final static Properties props = new Properties();
-
-    static {
-        props.setProperty("user", "root");
-        props.setProperty("password", "Mixage03!");
-    }
-    @FXML
-    public JFXTextField txtDocId;
-
-    @FXML
-    public JFXComboBox<String> comBoxDocId;
+public class UserPatientsController {
 
     @FXML
     private AnchorPane usrPatientPane;
@@ -78,7 +58,11 @@ public class UserPatientsController implements Initializable {
     private JFXButton btnView;
 
 
-
+    @FXML
+    void initialize() {
+        ObservableList<String> genderOptions = FXCollections.observableArrayList("Male", "Female");
+        comBoxGender.setItems(genderOptions);
+    }
 
 
 
@@ -91,39 +75,24 @@ public class UserPatientsController implements Initializable {
         String nic = txtPatientNIC.getText();
         String contactNum = txtContactNo.getText();
         String gender = comBoxGender.getValue();
-        String docId = comBoxDocId.getValue();
 
 
 
-        UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender,docId);
+        UserPatientDTO userPatientDTO = new UserPatientDTO(patId, name, address, age, nic, contactNum, gender);
 
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement("INSERT INTO patient " + " VALUES (?,?,?,?,?,?,?,?)");
-            pstm.setString(1,userPatientDTO.getPatId());
-            pstm.setString(2,userPatientDTO.getName());
-            pstm.setString(3,userPatientDTO.getAddress());
-            pstm.setString(4, String.valueOf(userPatientDTO.getAge()));
-            pstm.setString(5,userPatientDTO.getNic());
-            pstm.setString(6,userPatientDTO.getContactNum());
-            pstm.setString(7,userPatientDTO.getGender());
-            pstm.setString(8,userPatientDTO.getDocId());
+            try {
+                boolean isSaved = UserPatientModel.save(userPatientDTO);
 
-            int add = pstm.executeUpdate();
-
-            if (add > 0)   {
-
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved :) !!!").show();
-
-            } else {
-
-                new Alert(Alert.AlertType.ERROR, "Not saved :) !!!").show();
-
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved :) !!!").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Not saved :) !!!").show();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+            e.printStackTrace();
             }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @FXML
@@ -167,7 +136,6 @@ public class UserPatientsController implements Initializable {
                 txtPatientAge.setText(String.valueOf(userPatientDTO.getAge()));
                 comBoxGender.setValue(userPatientDTO.getGender());
 
-
             }else {
                 new Alert(Alert.AlertType.ERROR,"Invalid ID").show();
             }
@@ -177,9 +145,4 @@ public class UserPatientsController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> genderOptions = FXCollections.observableArrayList("Male", "Female");
-        comBoxGender.setItems(genderOptions);
-    }
 }

@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBConnection {
-    private final static String URL = "jdbc:mysql://localhost:3306/gangulaWedaMedura";
+    private final static String URL = "jdbc:mysql://localhost:3306/test1";
     private final static Properties props = new Properties();
 
     static {
         props.setProperty("user", "root");
-        props.setProperty("password", "Mixage03!");
+        props.setProperty("password", "Nadil7288@");
     }
 
     private static DBConnection dbConnection;

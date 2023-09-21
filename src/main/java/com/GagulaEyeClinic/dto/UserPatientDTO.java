@@ -2,6 +2,8 @@ package com.GagulaEyeClinic.dto;
 
 import lombok.*;
 
+import java.security.PrivateKey;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -16,6 +18,4 @@ public class UserPatientDTO {
     private String nic;
     private String contactNum;
     private String gender;
-    private String docId;
-
 }

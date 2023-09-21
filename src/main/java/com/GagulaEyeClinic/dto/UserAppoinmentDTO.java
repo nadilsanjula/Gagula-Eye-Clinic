@@ -3,6 +3,11 @@ package com.GagulaEyeClinic.dto;
 
 import lombok.*;
 
+<<<<<<< HEAD
+=======
+import java.util.Date;
+
+>>>>>>> origin/master
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,6 +17,7 @@ import lombok.*;
 
 public class UserAppoinmentDTO {
     private String appId;
+<<<<<<< HEAD
     private String date;
     private String time;
     private String purpose;
@@ -21,4 +27,11 @@ public class UserAppoinmentDTO {
 
     public UserAppoinmentDTO(String appId, String date, String purpose, String docId, String patId) {
     }
+=======
+    private String purpose;
+    private String docId;
+    private String patId;
+
+
+>>>>>>> origin/master
 }
