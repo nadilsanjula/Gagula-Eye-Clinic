@@ -1,22 +1,26 @@
 package com.GagulaEyeClinic.controller;
 
 import com.GagulaEyeClinic.dto.UserSupplierDTO;
+import com.GagulaEyeClinic.model.UserSupplierModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.AnchorPane;
-import com.GagulaEyeClinic.model.UserSupplierModel;
-import java.io.IOException;
-import java.sql.SQLException;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
-public  class UsrSuppliersController implements Initializable {
+public class UsrSuppliersController implements Initializable {
 
     @FXML
     private AnchorPane suppliersPane;
@@ -49,6 +53,10 @@ public  class UsrSuppliersController implements Initializable {
     private JFXButton btnView;
 
 
+    private TableView<UserSupplierDTO> tblViewSuppliers;
+
+
+    ObservableList<UserSupplierDTO> observableList = FXCollections.observableArrayList();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -58,21 +66,22 @@ public  class UsrSuppliersController implements Initializable {
         String nic = txtNic.getText();
         String contactNum = txtContactNo.getText();
 
-
-        UserSupplierDTO userSupplierDTO = new UserSupplierDTO(supId,name,address, nic,contactNum);
-
-
         try {
-            boolean isSaved = UserSupplierModel.save(userSupplierDTO);
+            boolean isSaved = UserSupplierModel.save(new UserSupplierDTO(supId, name, address, nic, contactNum));
 
 
             if (isSaved) {
 
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved :) !!!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved  !!!").show();
+                txtSupplierId.setText("");
+                txtSupplierName.setText("");
+                txtSupplierAddress.setText("");
+                txtNic.setText("");
+                txtContactNo.setText("");
 
             } else {
 
-                new Alert(Alert.AlertType.ERROR, "Not saved :) !!!").show();
+                new Alert(Alert.AlertType.ERROR, "Not saved  !!!").show();
 
             }
         } catch (SQLException e) {
@@ -83,11 +92,51 @@ public  class UsrSuppliersController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String supId = txtSupplierId.getText();
+        try {
+            boolean isRemoved = UserSupplierModel.remove(supId);
+
+            if (isRemoved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleted successfully").show();
+                txtSupplierId.setText("");
+                txtSupplierName.setText("");
+                txtSupplierAddress.setText("");
+                txtNic.setText("");
+                txtContactNo.setText("");
+                observableList.clear();
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Delete failed").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String supId = txtSupplierId.getText();
+        String name = txtSupplierName.getText();
+        String address = txtSupplierAddress.getText();
+        String nic = txtNic.getText();
+        String contactNum = txtContactNo.getText();
 
+        boolean isUpdated = false;
+        try {
+            isUpdated = UserSupplierModel.update(new UserSupplierDTO(supId, name, address, nic, contactNum));
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated successfully").show();
+                txtSupplierId.setText("");
+                txtSupplierName.setText("");
+                txtSupplierAddress.setText("");
+                txtNic.setText("");
+                txtContactNo.setText("");
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Update failed").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -112,8 +161,8 @@ public  class UsrSuppliersController implements Initializable {
                 txtSupplierAddress.setText(userSupplierDTO.getAddress());
                 txtSupplierName.setText(userSupplierDTO.getName());
                 txtContactNo.setText(userSupplierDTO.getContactNum());
-            }else {
-                new Alert(Alert.AlertType.ERROR,"Invalid ID").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid ID").show();
             }
 
         } catch (SQLException e) {
@@ -126,6 +175,24 @@ public  class UsrSuppliersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellValueFactory();
 
     }
+
+    private void setCellValueFactory() {
+
+    }
+
+   /* private void getAll() {
+        ObservableList<UserSupplierDTO> observableList = FXCollections.observableArrayList();
+        try {
+            List<UserSupplierDTO> supplierList = UserSupplierModel.getAll();
+            for(UserSupplierDTO supplier : supplierList) {
+                observableList.add(new UserSupplierDTO(supplier.getSupId(),supplier.getName(),supplier.getAddress(),supplier.getNic(),supplier.getContactNum()));
+            }
+            tblViewSuppliers.setItems(observableList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }*/
 }

@@ -1,5 +1,6 @@
 package com.GagulaEyeClinic.dto;
 
+
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,11 +10,11 @@ import lombok.*;
 @ToString
 
 
-public class UserSupplierDTO {
-    private String supId;
+public class UserRawMaterialDTO {
+    private String rawId;
     private String name;
-    private String address;
-    private String nic;
-    private String contactNum;
-}
+    private int qty;
+    private String category;
+    private String supId;
 
+}

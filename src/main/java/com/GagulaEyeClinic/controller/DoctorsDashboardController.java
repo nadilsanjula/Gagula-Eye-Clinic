@@ -111,7 +111,7 @@ public class DoctorsDashboardController {
 
     @FXML
     void patientBtnOnAction(ActionEvent event) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/docScanComparison.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/docPetient.fxml"));
         load.getChildren().clear();
         load.getChildren().add(root);
     }

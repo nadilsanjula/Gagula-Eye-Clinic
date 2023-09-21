@@ -23,32 +23,15 @@ import java.util.ResourceBundle;
 public class UsrViewSuppliersController implements Initializable {
 
 
-
+    public TableView tblSuppliers;
+    public TableColumn colId;
+    public TableColumn colName;
     @FXML
     private AnchorPane usrViewSuppliersPane;
 
-    @FXML
-    private TableView<UserSupplierDTO> tblViewSuppliers;
-
-    @FXML
-    private TableColumn<?, ?> colSupID;
-
-    @FXML
-    private TableColumn<?, ?> colSupName;
-
-    @FXML
-    private TableColumn<?, ?> colSupAddress;
-
-    @FXML
-    private TableColumn<?, ?> colNic;
-
-    @FXML
-    private TableColumn<?, ?> colContactNum;
 
     @FXML
     private JFXButton btnBack;
-
-    ObservableList<UserSupplierDTO> obList= FXCollections.observableArrayList();
 
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
@@ -60,28 +43,41 @@ public class UsrViewSuppliersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        getAll();
         setCellValueFactory();
-
+        getAll();
     }
 
     private void getAll() {
         try {
             List<UserSupplierDTO> userSupplierDTOS = UserSupplierModel.getAll();
+            ObservableList<UserSupplierDTO> list = FXCollections.observableArrayList();
             for (UserSupplierDTO userSupplierDTO :userSupplierDTOS){
-                obList.add(new UserSupplierDTO(userSupplierDTO.getSupId(), userSupplierDTO.getName(), userSupplierDTO.getAddress(),  userSupplierDTO.getNic(), userSupplierDTO.getContactNum()));
-                System.out.println("10"); }
-            tblViewSuppliers.setItems(obList);
+                list.add(
+                        new UserSupplierDTO(
+                        userSupplierDTO.getSupId(),
+                        userSupplierDTO.getName(),
+                        userSupplierDTO.getAddress(),
+                        userSupplierDTO.getNic(),
+                        userSupplierDTO.getContactNum()
+                ));
+            }
+            System.out.println(list.size()+"---------------");
+            tblSuppliers.setItems(list);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void setCellValueFactory() {
-        colSupID.setCellValueFactory(new PropertyValueFactory<>("supId"));
+
+     /*   colSupID.setCellValueFactory(new PropertyValueFactory<>("supId"));
         colSupName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colSupAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
-        colContactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
+        colContactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));*/
+
+
+        colId.setCellValueFactory(new PropertyValueFactory<>("supId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
 }

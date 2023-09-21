@@ -35,9 +35,11 @@ public class UserPatientsController implements Initializable {
         props.setProperty("user", "root");
         props.setProperty("password", "Mixage03!");
     }
-
+    @FXML
     public JFXTextField txtDocId;
 
+    @FXML
+    public JFXComboBox<String> comBoxDocId;
 
     @FXML
     private AnchorPane usrPatientPane;
@@ -89,7 +91,7 @@ public class UserPatientsController implements Initializable {
         String nic = txtPatientNIC.getText();
         String contactNum = txtContactNo.getText();
         String gender = comBoxGender.getValue();
-        String docId = txtDocId.getText();
+        String docId = comBoxDocId.getValue();
 
 
 

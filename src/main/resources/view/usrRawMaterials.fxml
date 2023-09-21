@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="rawMaterialsPane" prefHeight="846.0" prefWidth="1547.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GagulaEyeClinic.controller.UsrRawMaterialsController">
    <children>
-      <JFXTextField fx:id="txtMaterialId" focusColor="WHITE" layoutX="212.0" layoutY="292.0" promptText="Material Id" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtMaterialId" focusColor="WHITE" layoutX="212.0" layoutY="292.0" onAction="#txtIdOnAction" promptText="Material Id" unFocusColor="WHITE">
          <font>
             <Font size="30.0" />
          </font>
