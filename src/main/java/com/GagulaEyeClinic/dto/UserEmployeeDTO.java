@@ -2,7 +2,6 @@ package com.GagulaEyeClinic.dto;
 
 import lombok.*;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -16,6 +15,5 @@ public class UserEmployeeDTO {
     private String jobRole;
     private String contactNum;
     private String joinedDate;
-
 
 }

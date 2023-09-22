@@ -2,6 +2,7 @@ package com.GagulaEyeClinic.model;
 
 
 import com.GagulaEyeClinic.dto.UserPatientDTO;
+import com.GagulaEyeClinic.dto.UserRawMaterialDTO;
 import com.GagulaEyeClinic.util.CrudUtil;
 import com.GagulaEyeClinic.dto.UserEmployeeDTO;
 import com.GagulaEyeClinic.db.DBConnection;
@@ -13,33 +14,45 @@ import java.util.List;
 public class UserEmployeeModel {
 
 
-    /*public static boolean save(UserEmployeeDTO userEmployeeDTO) {
-        *//*String sql = "INSERT INTO employee(empId,name,address,contactNum,jobRole,joinedDate) VALUES(?,?,?,?,?,?,?,?)";
+    public static boolean save(UserEmployeeDTO userEmployeeDTO) throws SQLException {
+        String sql = "INSERT INTO employee(empId,name,address,contactNum,jobRole,joinedDate) VALUES(?,?,?,?,?,?)";
 
-        boolean isSaved = CrudUtil.execute(sql, UserEmployeeDTO.);
-        return isSaved;*//*
+        boolean isSaved = CrudUtil.execute(sql, userEmployeeDTO.getEmpId(), userEmployeeDTO.getName(), userEmployeeDTO.getAddress(), userEmployeeDTO.getContactNum(), userEmployeeDTO.getJobRole(), userEmployeeDTO.getJoinedDate());
+        return isSaved;
     }
-*/
-    public static UserPatientDTO search(String patId) throws SQLException {
-        String sql = "SELECT * FROM patient where patId = ?";
-
-        ResultSet resultSet = CrudUtil.execute(sql, patId);
-
-        if (resultSet.next()) {
-            UserPatientDTO userPatientDTO = new UserPatientDTO();
 
 
-            userPatientDTO.setName(resultSet.getString(2));
-            userPatientDTO.setAddress(resultSet.getString(3));
-            userPatientDTO.setAge(resultSet.getInt(4));
-            userPatientDTO.setNic(resultSet.getString(5));
-            userPatientDTO.setContactNum(resultSet.getString(6));
-            userPatientDTO.setGender(resultSet.getString(7));
-            userPatientDTO.setDocId(resultSet.getString(8));
+    public static UserEmployeeDTO search(String empId) throws SQLException {
+        try {
+            String sql = "SELECT * FROM employee WHERE empId = ?";
+            ResultSet resultSet = CrudUtil.execute(sql, empId);
 
+            if (resultSet.next()) {
+                UserEmployeeDTO userEmployeeDTO = new UserEmployeeDTO();
+                userEmployeeDTO.setEmpId(resultSet.getString("empId"));
+                userEmployeeDTO.setName(resultSet.getString("name"));
+                userEmployeeDTO.setAddress(resultSet.getString("address"));
+                userEmployeeDTO.setJobRole(resultSet.getString("jobRole"));
+                userEmployeeDTO.setContactNum(resultSet.getString("contactNum"));
+                userEmployeeDTO.setJoinedDate(String.valueOf(resultSet.getDate("joinedDate")));
 
-            return userPatientDTO;
+                return userEmployeeDTO;
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace(); // Log the exception for debugging purposes
+            throw new RuntimeException("Error while searching for employee by empId: " + empId, e);
         }
-        return null;
+    }
+
+
+    public static boolean update(UserEmployeeDTO userEmployeeDTO) throws SQLException {
+        String sql = "UPDATE employee SET name=?, address=?, contactNum=?, jobRole=?, joinedDate=? WHERE empId=?";
+        return CrudUtil.execute(sql, userEmployeeDTO.getName(), userEmployeeDTO.getAddress(), userEmployeeDTO.getContactNum(), userEmployeeDTO.getJobRole(), userEmployeeDTO.getJoinedDate(),userEmployeeDTO.getEmpId());
+    }
+
+    public static boolean remove(String empId) throws SQLException {
+        String sql = "DELETE FROM employee WHERE empId = ?";
+        return CrudUtil.execute(sql,empId);
     }
 }
