@@ -55,4 +55,6 @@ public class UserEmployeeModel {
         String sql = "DELETE FROM employee WHERE empId = ?";
         return CrudUtil.execute(sql,empId);
     }
+
+
 }

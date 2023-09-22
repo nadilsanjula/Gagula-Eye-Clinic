@@ -111,7 +111,6 @@ public class UsrEmployeeController implements Initializable {
 
     }
 
-
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
         String empId = txtEmployeeId.getText();
