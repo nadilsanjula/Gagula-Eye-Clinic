@@ -9,17 +9,7 @@
 
 <AnchorPane fx:id="usrViewEmployeePane" prefHeight="846.0" prefWidth="1547.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GagulaEyeClinic.controller.UsrViewEmployeeController">
    <children>
-      <TableView fx:id="tblEmployeeDetails" fixedCellSize="2.0" layoutX="124.0" layoutY="234.0" prefHeight="491.0" prefWidth="1288.0">
-        <columns>
-          <TableColumn fx:id="colEmpID" prefWidth="165.6666717529297" text="Employee Id" />
-          <TableColumn fx:id="colEmpName" prefWidth="244.66665649414062" text="Employee  Name" />
-            <TableColumn fx:id="colJobRole" prefWidth="210.33334350585938" text="Job Role" />
-            <TableColumn fx:id="colContact" prefWidth="202.33331298828125" text="Contact No" />
-            <TableColumn fx:id="colAddress" prefWidth="265.0" text="Address" />
-            <TableColumn fx:id="colJoingDate" prefWidth="198.0" text="Joined Date" />
-        </columns>
-      </TableView>
-      <Label layoutX="558.0" layoutY="-24.0" opacity="0.6" prefHeight="292.0" prefWidth="800.0" text="View Employee " textFill="WHITE">
+      <Label layoutX="509.0" layoutY="-24.0" opacity="0.6" prefHeight="292.0" prefWidth="1048.0" text="View Employee " textFill="WHITE">
          <font>
             <Font size="150.0" />
          </font>
@@ -29,5 +19,15 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <TableView fx:id="tblEmployeeDetails" layoutX="153.0" layoutY="182.0" prefHeight="542.0" prefWidth="1272.0">
+        <columns>
+          <TableColumn fx:id="colEmpID" prefWidth="103.0" text="Emp Id" />
+          <TableColumn fx:id="colEmpName" prefWidth="252.66668701171875" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="370.33331298828125" text="Address" />
+            <TableColumn fx:id="colContact" prefWidth="187.66668701171875" text="Contact Number" />
+            <TableColumn fx:id="colJobRole" prefWidth="201.0" text="Job Role" />
+            <TableColumn fx:id="colJoingDate" prefWidth="158.666748046875" text="Joined Date" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

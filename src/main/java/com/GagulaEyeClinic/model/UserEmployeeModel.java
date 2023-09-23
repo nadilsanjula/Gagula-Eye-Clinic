@@ -56,5 +56,23 @@ public class UserEmployeeModel {
         return CrudUtil.execute(sql,empId);
     }
 
+    public static List<UserEmployeeDTO> getAll() throws SQLException {
+        String sql = "SELECT * FROM employee";
+        ResultSet resultSet = CrudUtil.execute(sql);
+        List<UserEmployeeDTO> data = new ArrayList<>();
+        while (resultSet.next()) {
+            UserEmployeeDTO userEmployeeDTO = new UserEmployeeDTO(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+            );
+            data.add(userEmployeeDTO);
+        }
+        return data;
+    }
+
 
 }

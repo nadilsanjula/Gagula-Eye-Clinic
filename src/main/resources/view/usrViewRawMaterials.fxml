@@ -19,7 +19,7 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tblViewRawMaterials" layoutX="171.0" layoutY="165.0" prefHeight="491.0" prefWidth="1277.0">
+      <TableView fx:id="tblViewRawMaterials" layoutX="149.0" layoutY="172.0" prefHeight="536.0" prefWidth="1299.0">
         <columns>
           <TableColumn fx:id="colRawMatID" prefWidth="187.33331298828125" text="Raw Material Id" />
           <TableColumn fx:id="colRawMatName" prefWidth="331.33331298828125" text="Name" />

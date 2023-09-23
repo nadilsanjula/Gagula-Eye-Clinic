@@ -59,6 +59,6 @@
             <Font size="25.0" />
          </font>
       </JFXButton>
-      <DatePicker fx:id="datePicker" layoutX="699.0" layoutY="634.0" prefHeight="42.0" prefWidth="223.0" promptText="Date" />
+      <DatePicker fx:id="datePicker" layoutX="718.0" layoutY="634.0" prefHeight="42.0" prefWidth="223.0" promptText="Date" />
    </children>
 </AnchorPane>

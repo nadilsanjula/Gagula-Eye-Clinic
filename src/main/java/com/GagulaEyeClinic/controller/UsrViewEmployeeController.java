@@ -1,7 +1,7 @@
 package com.GagulaEyeClinic.controller;
 
-import com.GagulaEyeClinic.dto.UserRawMaterialDTO;
-import com.GagulaEyeClinic.model.UserRawMaterialModel;
+import com.GagulaEyeClinic.dto.UserEmployeeDTO;
+import com.GagulaEyeClinic.model.UserEmployeeModel;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +26,7 @@ public class UsrViewEmployeeController implements Initializable {
     private AnchorPane usrViewEmployeePane;
 
     @FXML
-    private TableView<UserRawMaterialDTO> tblEmployeeDetails;
+    private TableView<UserEmployeeDTO> tblEmployeeDetails;
 
     @FXML
     private TableColumn<?, ?> colEmpID;
@@ -59,16 +59,17 @@ public class UsrViewEmployeeController implements Initializable {
 
     private void getAll() {
         try {
-            List<UserRawMaterialDTO> userRawMaterialDTOS = UserRawMaterialModel.getAll();
-            ObservableList<UserRawMaterialDTO> list = FXCollections.observableArrayList();
-            for (UserRawMaterialDTO userRawMaterialDTO :userRawMaterialDTOS){
+            List<UserEmployeeDTO> userEmployeeDTOS = UserEmployeeModel.getAll();
+            ObservableList<UserEmployeeDTO> list = FXCollections.observableArrayList();
+            for (UserEmployeeDTO userEmployeeDTO : userEmployeeDTOS){
                 list.add(
-                        new UserRawMaterialDTO(
-                                userRawMaterialDTO.getSupId(),
-                                userRawMaterialDTO.getName(),
-                                userRawMaterialDTO.getQty(),
-                                userRawMaterialDTO.getCategory(),
-                                userRawMaterialDTO.getSupId()
+                        new UserEmployeeDTO(
+                                userEmployeeDTO.getEmpId(),
+                                userEmployeeDTO.getName(),
+                                userEmployeeDTO.getAddress(),
+                                userEmployeeDTO.getContactNum(),
+                                userEmployeeDTO.getJobRole(),
+                                userEmployeeDTO.getJoinedDate()
                         ));
             }
             tblEmployeeDetails.setItems(list);
@@ -79,12 +80,12 @@ public class UsrViewEmployeeController implements Initializable {
 
     private void setCellValueFactory() {
 
-      /*  colEmpID.setCellValueFactory(new PropertyValueFactory<>("empId"));
+        colEmpID.setCellValueFactory(new PropertyValueFactory<>("empId"));
         colEmpName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        co.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colContactNum.setCellValueFactory(new PropertyValueFactory<>("contactNum"));*/
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
+        colJobRole.setCellValueFactory(new PropertyValueFactory<>("jobRole"));
+        colJoingDate.setCellValueFactory(new PropertyValueFactory<>("joinedDate"));
     }
 
 

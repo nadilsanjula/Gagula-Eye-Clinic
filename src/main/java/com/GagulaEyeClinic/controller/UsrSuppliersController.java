@@ -80,6 +80,7 @@ public class UsrSuppliersController implements Initializable {
                 txtSupplierAddress.setText("");
                 txtNic.setText("");
                 txtContactNo.setText("");
+                txtEmail.setText("");
 
             } else {
 
@@ -105,6 +106,7 @@ public class UsrSuppliersController implements Initializable {
                 txtSupplierAddress.setText("");
                 txtNic.setText("");
                 txtContactNo.setText("");
+                txtEmail.setText("");
                 observableList.clear();
 
             } else {
@@ -134,6 +136,7 @@ public class UsrSuppliersController implements Initializable {
                 txtSupplierAddress.setText("");
                 txtNic.setText("");
                 txtContactNo.setText("");
+                txtEmail.setText("");
             } else {
                 new Alert(Alert.AlertType.ERROR, "Update failed").show();
             }
