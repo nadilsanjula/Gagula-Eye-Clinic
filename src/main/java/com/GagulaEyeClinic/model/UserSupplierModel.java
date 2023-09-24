@@ -21,7 +21,6 @@ public class UserSupplierModel {
         ResultSet resultSet = CrudUtil.execute(sql, supId);
 
         if (resultSet.next()) {
-            // Create a UserSupplierDTO and populate it with data from the ResultSet
             UserSupplierDTO userSupplierDTO = new UserSupplierDTO(
                     resultSet.getString("supId"),
                     resultSet.getString("name"),
@@ -32,8 +31,6 @@ public class UserSupplierModel {
             );
             return userSupplierDTO;
         }
-
-        // If no matching record is found, return null
         return null;
     }
 
@@ -64,6 +61,27 @@ public class UserSupplierModel {
         String sql = "INSERT INTO supplier(supId,name,address,nic,email,contactNum) VALUES(?,?,?,?,?,?)";
 
         return CrudUtil.execute(sql, userSupplierDTO.getSupId(), userSupplierDTO.getName(), userSupplierDTO.getAddress(), userSupplierDTO.getNic(),userSupplierDTO.getEmail(), userSupplierDTO.getContactNum());
+
+    }
+
+    public static List<String> getAllSupplierIDs() throws SQLException {
+        List<String> supplierIDs = new ArrayList<>();
+
+        String sqlQuery = "SELECT supId FROM supplier";
+
+        try {
+            // Execute the SQL query and get the results
+            ResultSet resultSet = CrudUtil.execute(sqlQuery);
+
+            while (resultSet.next()) {
+                String supplierID = resultSet.getString("supId");
+                supplierIDs.add(supplierID);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return supplierIDs;
 
     }
 }

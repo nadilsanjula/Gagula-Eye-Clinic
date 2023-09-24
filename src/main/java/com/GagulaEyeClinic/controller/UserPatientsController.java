@@ -246,4 +246,8 @@ public class UserPatientsController implements Initializable {
 
     private void setCellValueFactory() {
     }
+
+    public void comBoxDoctorIdOnAction(ActionEvent actionEvent) {
+
+    }
 }

@@ -1,9 +1,7 @@
 package com.GagulaEyeClinic.controller;
 
-import com.GagulaEyeClinic.dto.UserPatientDTO;
+
 import com.GagulaEyeClinic.dto.UserRawMaterialDTO;
-import com.GagulaEyeClinic.dto.UserSupplierDTO;
-import com.GagulaEyeClinic.model.UserPatientModel;
 import com.GagulaEyeClinic.model.UserRawMaterialModel;
 import com.GagulaEyeClinic.model.UserSupplierModel;
 import com.jfoenix.controls.JFXButton;
@@ -17,17 +15,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class UsrRawMaterialsController implements Initializable {
 
     @FXML
-    public JFXComboBox colSupplierID;
+    public JFXComboBox<String> colSupplierID;
 
     @FXML
     private AnchorPane rawMaterialsPane;
@@ -173,10 +171,22 @@ public class UsrRawMaterialsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
+        try {
+            colSupplierIDOnAction(null);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     private void setCellValueFactory() {
+
+    }
+
+    public void colSupplierIDOnAction(ActionEvent actionEvent) throws SQLException {
+        List<String> supplierIDs = UserSupplierModel.getAllSupplierIDs();
+        colSupplierID.getItems().clear();
+        colSupplierID.getItems().addAll(supplierIDs);
 
     }
 }
